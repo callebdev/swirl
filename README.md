@@ -1,2 +1,2 @@
 # swirl
-Just playing with JavaScript
+Fixing bugs
