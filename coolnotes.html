@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="assets/css/notestyle.css" />
+	<link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" />
+	<title>Cool-Downloader</title>
+</head>
+
+<body>
+
+
+	<!-- Image and text -->
+	<nav class="navbar navbar-light" style="background-color: #FFFF;">
+		<a class="navbar-brand" href="index.html">
+			<img src="img/swirl.png" width="30" height="30" class="d-inline-block align-top" alt="swirl-icon">
+			Swirl
+		</a>
+	</nav>
+
+	<div class="container">
+		<div class="card-group">
+			<div class="card">
+				<center>
+					<div class="card-body">
+						<h5 class="card-title">Write your note here!</h5>
+						<textarea rows="5" cols="30" id="txt_textarea" placeholder="write your text here"
+							width="100px"></textarea>
+						<br>
+						<label>Filename:</label>
+						<form method="POST">
+							<input class="form-control" type="text" id="file_name" placeholder="File Name" required>
+							<label>Save as:</label>
+							<select class="form-control" id="file_format">
+								<option value="rtf">Rich Text Document (.rtf)</option>
+								<option value="txt">Text (.txt)</option>
+							</select>
+							<br>
+							<button type="submit" class="btn btn-info" onclick="getFile()">Download</button>
+						</form>
+					</div>
+				</center>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+
+		function getBrand() {
+
+			window.alert(document.getElementById('brands').value);
+		}
+
+	</script>
+
+	<br><br><br>
+	<center>
+		<p>Follow-me on <a href="https:github.com/callebdev">GitHub</a></p>
+		<p>callebdev -
+			<script>document.write(new Date().getFullYear())</script>
+		</p>
+	</center>
+
+
+	<script type="text/javascript">
+
+
+		function getFile() {
+
+			var txt_textarea = document.getElementById("txt_textarea").value;
+
+			var file_format = document.getElementById("file_format").value;
+
+			var file_name = document.getElementById("file_name").value;
+
+			var filename = file_name + "." + file_format
+
+			if (txt_textarea == "" || txt_textarea == null || filename == "" || filename == null) {
+				window.alert("Please write a note and give a file name")
+			} else {
+				download(txt_textarea, filename)
+			}
+
+
+		}
+
+		function download(text, filename) {
+
+			var element = document.createElement('a')
+
+			element.setAttribute('href', "data:text/plain;charset=utf-8," + encodeURIComponent(text))
+
+			element.setAttribute('download', filename)
+
+			element.style.display = 'none'
+
+			document.body.appendChild(element)
+
+			element.click()
+
+			document.body.removeChild(element)
+
+		}
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Swirl - Cool-Cam</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" />
+
+
+  <script type="text/javascript">
+
+    function downloadVideo() {
+
+      var recordedVideo = document.getElementById("Feed")
+
+      document.write(recordedVideo.src)
+
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+  <!-- Image and text -->
+  <nav class="navbar navbar-light" style="background-color: #FFFF;">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/swirl.png" width="30" height="30" class="d-inline-block align-top" alt="swirl-icon">
+      Swirl
+    </a>
+  </nav>
+
+
+  <!-- PRINCIPAL -->
+  <div class="container">
+
+    <p align="justify"><b>Cool-Cam</b> is a free tool that allows you to record videos online and save them in your
+      device!<p>
+        <h5>Status: <i id="count" style="color: red">Empty</i></h5>
+
+        <!--Here are the video panels-->
+
+        <center>
+          <div class="container2">
+          
+            <div class="card-group">
+            <div class="card">
+              <h5 class="card-title">Streamer</h5>
+              <video id="vid" autoplay width="250" height="150"></video>
+              <p class="card-text" id="txt_act">&nbsp;</p>
+              <button type="button" class="btn btn-primary" id="RecordVideo" onclick="recordVideo()">Record
+                Video</button>
+              </div>
+
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+            <div class="card">
+              <h5 class="card-title">Recorded Video</h5>
+              <video id="Feed" autoplay controls download width="250" height="150"></video>
+              <p class="card-text" id="txt_result">&nbsp;</p>
+              <button type="button" class="btn btn-success" id="SaveVideo" onclick="downloadVideo()">Save</button>
+            </div>
+          </div>
+
+
+          </div>
+  
+  </center>
+
+  <br>
+
+  <!--Advantages-->
+  <h4>About Cool-Cam...</h4>
+  <img src="img/camera.gif" width="60px" height="100px">
+  <div class="container2">
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Online Video Recorder</h5>
+          <p class="card-text">This is an online app that allows you to record videos and save them to your device. You
+            can access it directly from your browser.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">It is secure</h5>
+          <p class="card-text">We don't share or broadcast your any data provoded by you to any third part.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">It is free</h5>
+          <p class="card-text">This is a totaly free app. You just need a device, a browser and a stable internet
+            connection.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <script>
+
+    var id = document.getElementById("count")
+
+    navigator.mediaDevices.getUserMedia({
+
+      video: {
+        width: 240,
+        height: 150
+      }
+    })
+      .then(stream => {
+        document.getElementById("vid").srcObject = stream;
+        id.innerHTML = "Camera ON"
+
+      })
+  </script>
+
+
+  <script src="assets/js/app.js"></script>
+
+  <br>
+  <center>
+    <p>Follow-me on <a href="https:github.com/callebdev">GitHub</a></p>
+    <p>callebdev -
+      <script>document.write(new Date().getFullYear())</script>
+    </p>
+  </center>
+
+</body>
+
+</html>
